@@ -5106,15 +5106,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73ebb71471444d443a0107d32a4a53c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -121.85
+      value: -121
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73ebb71471444d443a0107d32a4a53c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.78
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73ebb71471444d443a0107d32a4a53c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 62.11
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73ebb71471444d443a0107d32a4a53c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8794,10 +8794,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goPro: {fileID: 19541632}
+  projectilePrefab: {fileID: 7104446195856970529, guid: 6c538f0bf6f3a944e9f05df87146f905, type: 3}
+  projectileForce: 25
   itemYourCanEquipmqnt: EquipeNotSelected
   equipebleItem: []
   inventoryItems: []
   currentChestItems: []
+  cameraHolder: {fileID: 0}
 --- !u!143 &913238620
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9462,7 +9465,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8077563556569349235, guid: 2657f5866aa04d1479292ab268da87d6, type: 3}
       propertyPath: m_Name
-      value: Tent-4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8886329866828687049, guid: 2657f5866aa04d1479292ab268da87d6, type: 3}
       propertyPath: m_LocalScale.x
@@ -10656,7 +10659,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8213546604208068618, guid: d9875774d0c665144ac4d64eadd7b536, type: 3}
       propertyPath: m_Name
-      value: OutdoorTent-5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8842731771750531760, guid: d9875774d0c665144ac4d64eadd7b536, type: 3}
       propertyPath: m_LocalScale.x
@@ -11753,6 +11756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1096250733}
+  - component: {fileID: 1096250734}
   m_Layer: 0
   m_Name: Tents
   m_TagString: Untagged
@@ -11781,6 +11785,19 @@ Transform:
   - {fileID: 945627728}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1096250734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096250732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901c5791434f71f4a9e65179101578a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secelet: {fileID: 3228898723543208388, guid: f84bad8f598c09e4dac594aa45e675d3, type: 3}
 --- !u!1001 &1111826191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13920,7 +13937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5558674132131470349, guid: 16fa95fa8ab41214b8fcd8753544d5ec, type: 3}
       propertyPath: m_Name
-      value: ClosedTent-4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14446,7 +14463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2722920912438758676, guid: 097f938ab30dad44eb0996f9121199a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 178.72755
+      value: 178.9
       objectReference: {fileID: 0}
     - target: {fileID: 2722920912438758676, guid: 097f938ab30dad44eb0996f9121199a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14804,7 +14821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650933255591755939, guid: 406d1dd2bb6354340a3daf5f9c604d1b, type: 3}
       propertyPath: m_Name
-      value: FieldTent-4
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20748,7 +20765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852136035284158316, guid: 95636b0a915842347bc1e2389d283c5d, type: 3}
       propertyPath: m_Name
-      value: Tent-2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22290,7 +22307,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3616781483409833771, guid: 2d4279827e2ed87488c71044da120944, type: 3}
       propertyPath: m_Name
-      value: ClosedTent-1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4141819843884754321, guid: 2d4279827e2ed87488c71044da120944, type: 3}
       propertyPath: m_LocalScale.x

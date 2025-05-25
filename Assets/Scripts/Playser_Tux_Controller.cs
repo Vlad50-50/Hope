@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Playser_Tux_Controller : MonoBehaviour
 {
-    private const float gravityScale = 9.8f,
-                        speedScale = 5f,
-                        jumpForce = 8f,
+    private float gravityScale = 9.8f,
+                        speedScale = 15f,
+                        jumpForce = 5f,
                         turnSpeed = 90f;
 
     private CharacterController controller;
     [SerializeField] private Camera goPro;
+    [SerializeField] private GameObject projectilePrefab;        
+    [SerializeField] private float projectileForce = 250f;
 
     private float verticalSpeed = 0f, mouseX = 0f, mouseY = 0f,
                         currentAngle = 0f;
@@ -44,24 +46,25 @@ public class Playser_Tux_Controller : MonoBehaviour
 
     private float yaw = 0f;
     private float pitch = 0f;
-    
+
     void Update()
     {
         if (!canMove || controller == null) return;
-    
+
         RotateCharacter();
         MoveCharacter();
+        Fire();
     }
-    
+
     private void RotateCharacter()
     {
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
-    
+
         yaw += mouseX * turnSpeed * Time.deltaTime;
         pitch -= mouseY * turnSpeed * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, -120f, 120f);
-    
+
         transform.rotation = Quaternion.Euler(0f, yaw, 0f);
         goPro.transform.localEulerAngles = new Vector3(pitch, 0f, 0f);
     }
@@ -69,8 +72,14 @@ public class Playser_Tux_Controller : MonoBehaviour
 
     void MoveCharacter()
     {
+        float currentSpeed = speedScale;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed *= 2f;
+        }
+
         Vector3 velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        velocity = transform.TransformDirection(velocity) * speedScale;
+        velocity = transform.TransformDirection(velocity) * currentSpeed;
 
         if (controller.isGrounded)
         {
@@ -85,5 +94,20 @@ public class Playser_Tux_Controller : MonoBehaviour
         velocity.y = verticalSpeed;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void Fire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 spawnPosition = transform.position + transform.up * 1.5f + transform.forward * 1.4f;
+            Quaternion spawnRotation = transform.rotation;
+
+            GameObject projectile = Instantiate(projectilePrefab, spawnPosition, spawnRotation);
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+           
+            rb.AddForce(transform.forward * projectileForce);
+            
+        }
     }
 }
