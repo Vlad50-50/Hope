@@ -8,6 +8,9 @@ using Unity.VisualScripting;
 public class Playser_Tux_Controller : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI roundText;
+    [SerializeField] private TextMeshProUGUI HP_top_Text;
+
+    private int HP_top = 1000000;
     private float gravityScale = 9.8f,
                         speedScale = 15f,
                         jumpForce = 5f,
@@ -60,6 +63,7 @@ public class Playser_Tux_Controller : MonoBehaviour
         RotateCharacter();
         MoveCharacter();
         Fire();
+        UpdateUI();
     }
 
     private void RotateCharacter()
@@ -83,11 +87,17 @@ public class Playser_Tux_Controller : MonoBehaviour
             UpdateUI();
             Debug.Log("Collected" + coins);
         }
+        else if (obj.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Entered to enemy");
+            HP_top = HP_top - 500;
+        }
     }
 
     private void UpdateUI()
     {
         roundText.text = $"Coins:::{coins}";
+        HP_top_Text.text = $"HP::: {HP_top}";
     }
 
     void MoveCharacter()

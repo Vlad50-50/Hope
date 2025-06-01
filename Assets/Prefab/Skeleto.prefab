@@ -91,10 +91,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.24040985
+  m_Radius: 0.39998245
   m_Height: 2.188573
   m_Direction: 1
-  m_Center: {x: 0.00868988, y: 0.82477236, z: -0.1410675}
+  m_Center: {x: 0.00868988, y: 0.82477236, z: 0.018505096}
 --- !u!54 &8853041523961064458
 Rigidbody:
   m_ObjectHideFlags: 0
