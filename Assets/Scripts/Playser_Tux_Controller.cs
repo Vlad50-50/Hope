@@ -1,8 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using Unity.VisualScripting;
 
 public class Playser_Tux_Controller : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI roundText;
     private float gravityScale = 9.8f,
                         speedScale = 15f,
                         jumpForce = 5f,
@@ -10,13 +15,14 @@ public class Playser_Tux_Controller : MonoBehaviour
 
     private CharacterController controller;
     [SerializeField] private Camera goPro;
-    [SerializeField] private GameObject projectilePrefab;        
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileForce = 250f;
 
     private float verticalSpeed = 0f, mouseX = 0f, mouseY = 0f,
                         currentAngle = 0f;
 
     public const string EQUIP_NOT_SELECTED_TEXT = "EquipeNotSelected";
+    public int coins = 0;
     [HideInInspector] public string itemYourCanEquipmqnt = EQUIP_NOT_SELECTED_TEXT;
 
     [SerializeField] private GameObject[] equipebleItem;
@@ -69,6 +75,20 @@ public class Playser_Tux_Controller : MonoBehaviour
         goPro.transform.localEulerAngles = new Vector3(pitch, 0f, 0f);
     }
 
+    void OnCollisionEnter(Collision obj)
+    {
+        if (obj.gameObject.CompareTag("Collection"))
+        {
+            coins++;
+            UpdateUI();
+            Debug.Log("Collected" + coins);
+        }
+    }
+
+    private void UpdateUI()
+    {
+        roundText.text = $"Coins:::{coins}";
+    }
 
     void MoveCharacter()
     {
@@ -105,9 +125,9 @@ public class Playser_Tux_Controller : MonoBehaviour
 
             GameObject projectile = Instantiate(projectilePrefab, spawnPosition, spawnRotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
-           
+
             rb.AddForce(transform.forward * projectileForce);
-            
+
         }
     }
 }
