@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Playser_Tux_Controller : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private TextMeshProUGUI HP_top_Text;
 
-    private int HP_top = 1000000;
+    [SerializeField] private int HP_top = 1000000;
     private float gravityScale = 9.8f,
                         speedScale = 15f,
                         jumpForce = 5f,
@@ -59,11 +60,31 @@ public class Playser_Tux_Controller : MonoBehaviour
     void Update()
     {
         if (!canMove || controller == null) return;
+        if (HP_top <= 0) GameOver();
 
         RotateCharacter();
         MoveCharacter();
         Fire();
         UpdateUI();
+        VictoryMethod();
+    }
+
+    void GameOver()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        SceneManager.LoadScene("GameOver");
+    }
+
+    void VictoryMethod()
+    {
+        if (coins >= 5)
+        {
+            SceneManager.LoadScene("Vicroty");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void RotateCharacter()
