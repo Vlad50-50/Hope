@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class Playser_Tux_Controller : MonoBehaviour
 {
+    public AudioClip clip;          // Назначь аудиоклип в инспекторе
+    private AudioSource audioSource;
     [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private TextMeshProUGUI HP_top_Text;
 
@@ -51,6 +53,13 @@ public class Playser_Tux_Controller : MonoBehaviour
         if (controller == null)
         {
             Debug.LogError("CharacterController not found on " + gameObject.name);
+        }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Если AudioSource нет — добавим автоматически
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
 
@@ -151,14 +160,37 @@ public class Playser_Tux_Controller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 spawnPosition = transform.position + transform.up * 1.5f + transform.forward * 1.4f;
-            Quaternion spawnRotation = transform.rotation;
+            // Получаем камеру
+            Camera cam = Camera.main;
 
+            // Направление взгляда камеры
+            Vector3 direction = cam.transform.forward;
+
+            // Позиция перед камерой (можно подстроить под нужную высоту и отступ)
+            Vector3 spawnPosition = cam.transform.position + cam.transform.forward * 1.4f + cam.transform.up * -0.1f;
+
+            // Поворот снаряда — в направлении взгляда камеры
+            Quaternion spawnRotation = Quaternion.LookRotation(direction);
+
+            // Создаём снаряд
             GameObject projectile = Instantiate(projectilePrefab, spawnPosition, spawnRotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
-            rb.AddForce(transform.forward * projectileForce);
-
+            // Добавляем силу в направлении взгляда камеры
+            rb.AddForce(direction * projectileForce, ForceMode.Impulse);
         }
     }
+
+    public void PlaySound()
+    {
+        if (clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogWarning("Аудиоклип не назначен!");
+        }
+    }
+
 }

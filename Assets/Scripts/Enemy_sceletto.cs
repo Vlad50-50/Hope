@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy_sceletto : MonoBehaviour
@@ -13,5 +14,12 @@ public class Enemy_sceletto : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         // Перемещение к цели
         transform.position += direction * speed * Time.deltaTime;
+    }
+
+    void OnTriggerEnter(Collider obj) {
+        if (obj.gameObject.CompareTag("mega_cube"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
