@@ -29,9 +29,17 @@ public class Enemy_sceletto : MonoBehaviour
         if (target == null) return;
         Vector3 direction = (target.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
+
+        Vector3 lookDirection = target.position - transform.position;
+        if (lookDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * 5f); 
+        }
     }
 
-    void OnTriggerEnter(Collider obj) {
+    void OnTriggerEnter(Collider obj)
+    {
         if (obj.gameObject.CompareTag("mega_cube"))
         {
             HP_Scelletto = HP_Scelletto - 200;

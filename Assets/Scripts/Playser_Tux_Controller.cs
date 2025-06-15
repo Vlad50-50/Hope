@@ -91,7 +91,7 @@ public class Playser_Tux_Controller : MonoBehaviour
 
     void VictoryMethod()
     {
-        if (coins >= 5)
+        if (coins >= 10)
         {
             SceneManager.LoadScene("Vicroty");
             Cursor.visible = true;
