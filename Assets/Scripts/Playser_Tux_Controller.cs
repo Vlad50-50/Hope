@@ -11,6 +11,7 @@ public class Playser_Tux_Controller : MonoBehaviour
     public AudioClip clip;          // Назначь аудиоклип в инспекторе
     private AudioSource audioSource;
     [SerializeField] private TextMeshProUGUI roundText;
+    [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private TextMeshProUGUI HP_top_Text;
 
     [SerializeField] private int HP_top = 1000000;
@@ -42,6 +43,8 @@ public class Playser_Tux_Controller : MonoBehaviour
     private InventoryManager inventoryManager;
 
     [SerializeField] private Transform cameraHolder;
+
+    int count = 10;
 
     void Awake()
     {
@@ -116,6 +119,7 @@ public class Playser_Tux_Controller : MonoBehaviour
             coins++;
             UpdateUI();
             Debug.Log("Collected" + coins);
+            count = 10;
         }
         else if (obj.gameObject.CompareTag("Enemy"))
         {
@@ -156,12 +160,15 @@ public class Playser_Tux_Controller : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+
     void Fire()
     {
-        if (Input.GetMouseButtonDown(0))
+        countText.text = $"fires is {count}";
+        if (Input.GetMouseButtonDown(0) && count > 0)
         {
+            count--;
             // Получаем камеру
-            Camera cam = Camera.main;
+            Camera cam = goPro;
 
             // Направление взгляда камеры
             Vector3 direction = cam.transform.forward;
@@ -178,6 +185,10 @@ public class Playser_Tux_Controller : MonoBehaviour
 
             // Добавляем силу в направлении взгляда камеры
             rb.AddForce(direction * projectileForce, ForceMode.Impulse);
+        }
+        else
+        {
+            Debug.Log("Count null");
         }
     }
 
