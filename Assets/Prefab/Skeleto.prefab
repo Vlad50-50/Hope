@@ -139,3 +139,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 5
+  HP_Scelletto: 2200
+  playerTransform: {fileID: 0}

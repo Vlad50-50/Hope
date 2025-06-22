@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Playser_Tux_Controller : MonoBehaviour
 {
-    public AudioClip clip;          // Назначь аудиоклип в инспекторе
+    public AudioClip clip;
     private AudioSource audioSource;
     [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private TextMeshProUGUI countText;
@@ -169,6 +169,7 @@ public class Playser_Tux_Controller : MonoBehaviour
             count--;
             // Получаем камеру
             Camera cam = goPro;
+            PlaySound();
 
             // Направление взгляда камеры
             Vector3 direction = cam.transform.forward;
