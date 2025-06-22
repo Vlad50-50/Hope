@@ -4578,6 +4578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleto
       objectReference: {fileID: 0}
+    - target: {fileID: 7833802981845620146, guid: f84bad8f598c09e4dac594aa45e675d3, type: 3}
+      propertyPath: HP_Scelletto
+      value: 20000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5163,7 +5167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73ebb71471444d443a0107d32a4a53c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -121
+      value: -121.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73ebb71471444d443a0107d32a4a53c2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6935,8 +6939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.3, y: 106.3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.57, y: 106.3}
+  m_SizeDelta: {x: 249.73, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &671464260
 MonoBehaviour:
@@ -6971,7 +6975,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: to win you need colect 10 coins
+  m_Text: to win you need colect 10 dead scelets
 --- !u!222 &671464261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14724,7 +14728,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319923698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14732,7 +14736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6, y: -11.9}
+  m_AnchoredPosition: {x: 0.9, y: -12.1}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319923700
